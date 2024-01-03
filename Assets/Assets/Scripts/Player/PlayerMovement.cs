@@ -152,7 +152,7 @@ public class PlayerMovement : MonoBehaviour
         if (IsDashing) { return; }
         myAnimator.SetBool("IsAttacking",true);
         StartCoroutine(DelayedStopAttack());
-
+/*
         // Detect Enemies in the range of Attack
         Collider2D[] HitEnemies= Physics2D.OverlapCircleAll(AttackPoint.position, AttackRadius,EnemyLayer); 
         // Deal damage to enemies
@@ -171,7 +171,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 Trumper.HitPoints -= AttackDamage;
             }
-        }
+        }*/
     }
     private void OnDrawGizmosSelected()
     {

@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Trumper : MonoBehaviour
+public class Trumper : MonoBehaviour,Idamagable
 {
     public Transform FireyPoint;
     public Transform PlayerPos;
@@ -12,16 +13,19 @@ public class Trumper : MonoBehaviour
     public float spawnInterval = 5f;
     private Rigidbody2D Trumperbody;
     private Animator Trumperanimator;
-    public float HitPoints = 6f;
+    private float HitPoints;
+    public float MaxHealth;
     public Rigidbody2D rigidbody23;
     private bool IsAlive = true;
     [SerializeField] Vector2 deathKick = new Vector2(10f, 10f);
+    public Image image;
     private void Start()
     {
         // Start invoking the SpawnPrefab function with the specified interval
         InvokeRepeating("SpawnPrefab", 0f, spawnInterval);
         Trumperbody = GetComponent<Rigidbody2D>();
         Trumperanimator = GetComponent<Animator>();
+        HitPoints = MaxHealth;
     }
     private void Update()
     {
@@ -33,7 +37,7 @@ public class Trumper : MonoBehaviour
         if (!IsAlive) return;
         if (PlayerPos.position.x > transform.position.x)
         {
-            transform.localScale = new Vector2(1f,Trumperbody.transform.localScale.y);
+            transform.localScale = new Vector2(1f, Trumperbody.transform.localScale.y);
             prefabToInstantiate = RightFireball;
         }
         else
@@ -45,28 +49,25 @@ public class Trumper : MonoBehaviour
     private void SpawnPrefab()
     {
         if (!IsAlive) return;
-        // Trumperanimator.SetBool("IsFiring", true);
-        //StartCoroutine(delayfunction());
         Instantiate(prefabToInstantiate, FireyPoint.position, FireyPoint.rotation);
-        //StartCoroutine(StopFiring());
+      
     }
-    /* IEnumerator delayfunction()
-     {
-         yield return new WaitForSecondsRealtime(1f);
-     }
-     IEnumerator StopFiring()
-     {
-         yield return new WaitForSecondsRealtime(1f);
-         Trumperanimator.SetBool("IsFiring", false);
-     }*/
     void Death()
     {
         if (HitPoints <= 0)
         {
             IsAlive = false;
             Trumperanimator.SetBool("IsDead", true);
-            rigidbody23.velocity = deathKick;
+            //rigidbody23.velocity = deathKick;
+            gameObject.layer = LayerMask.NameToLayer("Ground");
             Destroy(gameObject, 5f);
         }
+    }
+
+    public void DamageAmount(float AttackDamage)
+    {
+        HitPoints -= AttackDamage;
+        float healthbar = HitPoints / MaxHealth;
+        image.fillAmount = healthbar;
     }
 }

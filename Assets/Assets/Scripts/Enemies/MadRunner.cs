@@ -2,6 +2,8 @@ using SupanthaPaul;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class MadRunner : MonoBehaviour,Idamagable
 {
@@ -11,13 +13,16 @@ public class MadRunner : MonoBehaviour,Idamagable
     private float MaddyDirection;
     public Animator animator;
     bool IsAlive = true;
-    public float HitPoints = 3f;
+    public float MaxHealth = 3f;
+    private float HitPoints;
     [SerializeField] Vector2 deathKick = new Vector2(10f, 10f);
+    public Image image;
     // Start is called before the first frame update
     void Start()
     {
         MaddyDirection = transform.localScale.x;
         Player = FindObjectOfType<PlayerController>();
+        HitPoints = MaxHealth;
     }
 
     // Update is called once per frame
@@ -69,5 +74,7 @@ public class MadRunner : MonoBehaviour,Idamagable
     public void DamageAmount(float AttackDamage)
     {
         HitPoints -= AttackDamage;
+        float healthbar = HitPoints / MaxHealth;
+        image.fillAmount = healthbar;
     }
 }
