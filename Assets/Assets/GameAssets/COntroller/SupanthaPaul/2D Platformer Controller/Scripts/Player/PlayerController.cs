@@ -74,6 +74,8 @@ namespace SupanthaPaul
         public bool IsAlive = true;
 		private RaycastHit2D[] hits;
 		[SerializeField] Vector2 DeathKick = new Vector2(10f, 10f);
+
+		public float PlayerCoins=0;
 		void Start()
 		{
 			// create pools for particles
@@ -196,6 +198,7 @@ namespace SupanthaPaul
 		}
 		private void Update()
 		{
+
 			Die();
 			// horizontal input
 			//moveInput = InputSystem.HorizontalRaw();
@@ -242,7 +245,7 @@ namespace SupanthaPaul
 		}
         void OnAttack()
         {
-            Debug.Log("attack");
+            //Debug.Log("attack");
 			PA.OnAttackAnimationComplete();
             Vector2 attackdir = m_facingRight ? Vector2.right : Vector2.left;
             hits = Physics2D.CircleCastAll(attackpos.position, attackrange, attackdir, 0f,Enemies);

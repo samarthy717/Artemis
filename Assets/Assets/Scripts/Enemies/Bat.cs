@@ -1,4 +1,5 @@
 using Pathfinding;
+using SupanthaPaul;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -12,9 +13,14 @@ public class Bat : MonoBehaviour,Idamagable
     public float MaxHealth = 3f;
     private float HitPoints;
     public Animator anim;
+    private AIDestinationSetter seeker;
+    PlayerController PlayerFire;
     void Start()
     {
         HitPoints=MaxHealth;
+        PlayerFire = FindObjectOfType<PlayerController>();
+        seeker = GetComponent<AIDestinationSetter>();  // Get the Seeker component from the same GameObject
+        seeker.target = PlayerFire.transform;
     }
 
     // Update is called once per frame

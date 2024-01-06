@@ -7,6 +7,8 @@ TagManager:
   - Enemies
   - Hazards
   - Ladders
+  - Coin
+  - Gem
   layers:
   - Default
   - TransparentFX
@@ -41,14 +43,11 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: background
+    uniqueID: 753142879
+    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: player
-    uniqueID: 875923655
-    locked: 0
-  - name: Enemies
-    uniqueID: 2477781839
     locked: 0
   - name: Ground
     uniqueID: 2800256291
@@ -56,8 +55,11 @@ TagManager:
   - name: Forest
     uniqueID: 1612481513
     locked: 0
-  - name: Frame
-    uniqueID: 1323004129
+  - name: Enemies
+    uniqueID: 2477781839
+    locked: 0
+  - name: player
+    uniqueID: 875923655
     locked: 0
   - name: UI
     uniqueID: 3296803049
