@@ -1,11 +1,11 @@
 # Artemis Action Platformer
 
-![Game Screenshot 1](screenshot1.png)
+![Game Screenshot](Assets/Assets/Screenshot 2024-07-09 124610.png)
 
 ## Overview
-Artemis Action Platformer is an exciting 2D platformer game currently under development for web and PC platforms. The game features unique levels, AI-driven enemies, and A* pathfinding for dynamic enemy behavior.
+Artemis Action Platformer is an exciting 2D platformer game currently under development for web and PC platforms. The game features unique levels, AI-driven enemies, and fun gameplay mechanics.
 
-![Game Screenshot 2](screenshot2.png)
+![Game Screenshot 1](Assets/Assets/Screenshot 2024-07-09 124809.png)
 
 ## Features
 - **Unique Levels:** Explore diverse and challenging levels designed to test your platforming skills.
